@@ -12,7 +12,7 @@
 
 <meta name="date" content="2023-05-14" />
 
-<title>Food Explorer</title>
+<title>Food Explorer (Exercises to practice)</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -349,19 +349,24 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Food Explorer</h1>
+<h1 class="title toc-ignore">Food Explorer (Exercises to practice)</h1>
 <h4 class="date">2023-05-14</h4>
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#which-category-of-food-has-the-highest-average-price" id="toc-which-category-of-food-has-the-highest-average-price">1. Which
+category of food has the highest average price?</a></li>
+<li><a href="#what-is-the-most-common-country-of-origin-for-the-food-items" id="toc-what-is-the-most-common-country-of-origin-for-the-food-items">2.
+What is the most common country of origin for the food items?</a></li>
+</ul>
+</div>
 
-<div id="exercise-to-practice" class="section level1">
-<h1>Exercise to practice</h1>
-<div id="which-category-of-food-has-the-highest-average-price" class="section level3">
-<h3>1. Which category of food has the highest average price?</h3>
-<pre class="r"><code>food_data &lt;- read.csv(&quot;data/foodData.csv&quot;)
-
-# group_by on &quot;Category&quot; and calculate average
+<pre class="r"><code>food_data &lt;- read.csv(&quot;data/foodData.csv&quot;)</code></pre>
+<div id="which-category-of-food-has-the-highest-average-price" class="section level1">
+<h1>1. Which category of food has the highest average price?</h1>
+<pre class="r"><code># group_by on &quot;Category&quot; and calculate average
 group_categories &lt;- food_data %&gt;% 
                     group_by(Category) %&gt;%
                     summarise(average = mean(Price))
@@ -376,8 +381,10 @@ max_mean_price_category</code></pre>
 ##   Category average
 ##   &lt;chr&gt;      &lt;dbl&gt;
 ## 1 Steak       26.5</code></pre>
-<p>Answer: Stake - 26.49</p>
 </div>
+<div id="what-is-the-most-common-country-of-origin-for-the-food-items" class="section level1">
+<h1>2. What is the most common country of origin for the food
+items?</h1>
 </div>
 
 

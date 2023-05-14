@@ -1,6 +1,8 @@
 ---
-title: "Food Explorer"
-output: html_document
+title: "Food Explorer (Exercises to practice)"
+output:
+  html_document:
+    toc: yes
 date: "2023-05-14"
 ---
 
@@ -8,10 +10,12 @@ date: "2023-05-14"
 library(tidyverse)
 ``` 
 
-# Exercise to practice
-### 1. Which category of food has the highest average price?
-```{r}
+```{r import_csv}
 food_data <- read.csv("data/foodData.csv")
+```
+
+# 1. Which category of food has the highest average price?
+```{r exercise1}
 
 # group_by on "Category" and calculate average
 group_categories <- food_data %>% 
@@ -24,4 +28,17 @@ max_mean_price_category <- group_categories %>%
   slice_head(n = 1)
 
 max_mean_price_category
+```
+
+# 2. What is the most common country of origin for the food items?
+```{r exercise2}
+group_country <- food_data %>%
+                 group_by(Country.of.Origin)  %>%
+                  summarise(count = n())
+                  
+most_common_country_of_origin <- group_country %>%
+                                  arrange(desc(count)) %>%
+                                  slice_head(n = 1)
+
+most_common_country_of_origin
 ```
