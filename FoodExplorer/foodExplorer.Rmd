@@ -1,0 +1,29 @@
+---
+title: "Food Explorer"
+output: html_document
+date: "2023-05-14"
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+``` 
+
+# This synthax will run a command in R (could be Python, Sql, etc..)
+```{r}
+# 1. Which category of food has the highest average price?
+
+food_data <- read.csv("data/foodData.csv")
+
+# group_by on "Category" and calculate average
+group_categories <- foodData %>% 
+                    group_by(Category) %>%
+                    summarise(average = mean(Price))
+
+# Sort by the highest mean price and get the first record
+max_mean_price_category <- group_categories %>%
+  arrange(desc(average)) %>%
+  slice_head(n = 1)
+
+print(max_mean_price_category)
+# Answer: Stake - 26.49
+```

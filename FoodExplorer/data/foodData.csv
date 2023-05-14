@@ -1,0 +1,48 @@
+Food Name,Category,Price,Main Ingredient,Calories per Serving,Protein (g),Carbohydrate (g),Fat (g),Country of Origin
+Pizza Margherita,Pizza,12.99,Mozzarella Cheese,250,15,30,10,Italy
+Grilled Salmon,Seafood,18.50,Salmon,350,30,0,15,Norway
+Chicken Caesar Salad,Salad,9.99,Chicken Breast,200,25,10,5,United States
+Beef Burger,Burger,8.99,Beef,500,40,35,25,United States
+Pasta Carbonara,Pasta,11.99,Pancetta,400,20,50,15,Italy
+Spaghetti Bolognese,Pasta,10.50,Ground Beef,450,25,40,20,Italy
+Sushi Rolls,Sushi,15.75,Tuna,300,20,30,10,Japan
+Chicken Teriyaki,Asian,12.25,Chicken,280,30,20,10,Japan
+Caesar Wrap,Wrap,6.99,Grilled Chicken,350,25,30,15,United States
+Taco Salad,Mexican,9.50,Ground Beef,400,30,35,20,Mexico
+Roast Beef Sandwich,Sandwich,7.50,Roast Beef,350,30,25,15,United States
+Mushroom Risotto,Risotto,11.99,Mushrooms,300,10,45,10,Italy
+Steak Frites,Steak,22.99,Steak,600,50,40,30,France
+Fish and Chips,Seafood,14.50,Cod,500,25,50,20,United Kingdom
+Caprese Salad,Salad,8.75,Mozzarella,180,10,10,10,Italy
+Baked Chicken,Chicken,9.25,Chicken,320,35,15,10,United States
+Vegetable Stir-Fry,Asian,10.99,Mixed Vegetables,200,5,40,5,China
+Shrimp Scampi,Seafood,16.99,Shrimp,280,20,15,10,Italy
+Chicken Alfredo,Pasta,12.50,Chicken,400,30,40,20,Italy
+Hamburger,Burger,7.99,Beef,450,25,30,20,United States
+Crispy Fried Chicken,Chicken,11.50,Chicken,380,30,15,20,United States
+Mediterranean Salad,Salad,9.75,Feta Cheese,220,10,15,15,Greece
+Pad Thai,Asian,12.99,Shrimp,350,15,40,10,Thailand
+Chicken Quesadilla,Mexican,8.99,Chicken,400,25,30,20,Mexico
+Spinach and Feta Stuffed Chicken,Chicken,13.99,Chicken,300,35,5,15,United States
+Beef Stir-Fry,Asian,11.25,Beef,350,30,20,15,China
+Chicken Tikka Masala,Indian,14.50,Chicken,400,25,30,20,India
+Margherita Flatbread,Pizza,9.99,Tomatoes,280,12,45,8,Italy
+Grilled Swordfish,Seafood,21.95,Swordfish,420,25,0,18,Malta
+Caesar Pasta Salad,Salad,7.50,Pasta,320,10,45,12,United States
+Turkey Burger,Burger,7.99,Turkey,400,30,25,20,United States
+Pesto Linguine,Pasta,13.50,Basil,450,15,60,18,Italy
+Chicken Shawarma,Middle Eastern,10.99,Chicken,380,30,25,15,Lebanon
+Mango Sushi Roll,Sushi,12.75,Mango,280,8,55,5,Japan
+Teriyaki Beef,Asian,14.50,Beef,480,40,25,18,Japan
+Greek Gyro,Greek,9.25,Lamb,450,25,35,20,Greece
+Tostada Bowl,Mexican,8.99,Beans,320,12,45,10,Mexico
+Pastrami Sandwich,Sandwich,11.50,Pastrami,450,20,40,25,United States
+Vegetable Lasagna,Pasta,10.99,Zucchini,320,15,40,12,Italy
+Filet Mignon,Steak,29.99,Beef,600,45,10,40,United States
+Crispy Fried Shrimp,Seafood,16.50,Shrimp,320,20,30,15,United States
+Caprese Skewers,Appetizer,8.75,Cherry Tomatoes,120,6,8,8,Italy
+Grilled Turkey Breast,Chicken,11.25,Turkey,280,35,5,10,United States
+Stir-Fried Noodles,Asian,10.99,Chow Mein Noodles,380,10,60,12,China
+Coconut Shrimp,Seafood,17.99,Shrimp,340,18,25,15,United States
+Butter Chicken,Indian,13.50,Chicken,420,30,25,20,India
+Veggie Burger,Burger,9.99,Plant-Based Ingredients,350,20,30,15,United States
