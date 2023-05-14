@@ -8,6 +8,7 @@ date: "2023-05-14"
 
 ```{r setup, include=FALSE}
 library(tidyverse)
+library(knitr)
 ``` 
 
 ```{r import_csv}
@@ -42,3 +43,56 @@ most_common_country_of_origin <- group_country %>%
 
 most_common_country_of_origin
 ```
+
+# 3. Calculate the average calories per serving for the food items in the "Salad" category.
+```{r exercise3}
+food_data %>%
+  filter(Category == "Salad") %>%
+  summarise(salad_average_calories_per_serving = mean(Calories.per.Serving)) 
+```
+
+# 4. How many food items have a protein content greater than 20 grams?
+```{r exercise4}
+high_protein_items <- food_data %>%
+                      filter(Protein..g. > 20)
+
+nrow(high_protein_items)
+```
+
+That are:
+`r high_protein_items %>% kable()`
+
+# 5. Determine the distribution of carbohydrate content for the food items.
+```{r exercise5}
+distribution <- food_data %>%
+                arrange(Carbohydrate..g.) %>%
+                summarise(maximum = max(Carbohydrate..g.),
+                          minimum = min(Carbohydrate..g.),
+                          mean = mean(Carbohydrate..g.),
+                          median = median(Carbohydrate..g.),
+                          'standard deviation' = sd(Carbohydrate..g.))
+
+distribution %>% kable()
+
+hist(food_data$Carbohydrate..g., 
+     breaks = "Sturges",  # Specify the number of bins or choose a binning method
+     main = "Carbohydrate Content Distribution",  # Title of the plot
+     xlab = "Carbohydrate (g)",  # Label for x-axis
+     ylab = "Frequency",  # Label for y-axis
+     col = "lightblue"  # Color of the bars
+)
+```
+
+# 6. What is the average fat content of the food items in the "Pasta" category?
+```{r exercise6}
+food_data %>%
+  filter(Category == "Pasta") %>%
+  summarise(pasta_fat_average_content = mean(Fat..g.))
+```
+
+
+
+
+
+
+

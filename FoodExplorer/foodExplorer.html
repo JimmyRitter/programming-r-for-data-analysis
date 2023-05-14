@@ -360,6 +360,18 @@ display: none;
 category of food has the highest average price?</a></li>
 <li><a href="#what-is-the-most-common-country-of-origin-for-the-food-items" id="toc-what-is-the-most-common-country-of-origin-for-the-food-items">2.
 What is the most common country of origin for the food items?</a></li>
+<li><a href="#calculate-the-average-calories-per-serving-for-the-food-items-in-the-salad-category." id="toc-calculate-the-average-calories-per-serving-for-the-food-items-in-the-salad-category.">3.
+Calculate the average calories per serving for the food items in the
+“Salad” category.</a></li>
+<li><a href="#how-many-food-items-have-a-protein-content-greater-than-20-grams" id="toc-how-many-food-items-have-a-protein-content-greater-than-20-grams">4.
+How many food items have a protein content greater than 20
+grams?</a></li>
+<li><a href="#determine-the-distribution-of-carbohydrate-content-for-the-food-items." id="toc-determine-the-distribution-of-carbohydrate-content-for-the-food-items.">5.
+Determine the distribution of carbohydrate content for the food
+items.</a></li>
+<li><a href="#what-is-the-average-fat-content-of-the-food-items-in-the-pasta-category" id="toc-what-is-the-average-fat-content-of-the-food-items-in-the-pasta-category">6.
+What is the average fat content of the food items in the “Pasta”
+category?</a></li>
 </ul>
 </div>
 
@@ -385,6 +397,402 @@ max_mean_price_category</code></pre>
 <div id="what-is-the-most-common-country-of-origin-for-the-food-items" class="section level1">
 <h1>2. What is the most common country of origin for the food
 items?</h1>
+<pre class="r"><code>group_country &lt;- food_data %&gt;%
+                 group_by(Country.of.Origin)  %&gt;%
+                  summarise(count = n())
+                  
+most_common_country_of_origin &lt;- group_country %&gt;%
+                                  arrange(desc(count)) %&gt;%
+                                  slice_head(n = 1)
+
+most_common_country_of_origin</code></pre>
+<pre><code>## # A tibble: 1 × 2
+##   Country.of.Origin count
+##   &lt;chr&gt;             &lt;int&gt;
+## 1 United States        16</code></pre>
+</div>
+<div id="calculate-the-average-calories-per-serving-for-the-food-items-in-the-salad-category." class="section level1">
+<h1>3. Calculate the average calories per serving for the food items in
+the “Salad” category.</h1>
+<pre class="r"><code>food_data %&gt;%
+  filter(Category == &quot;Salad&quot;) %&gt;%
+  summarise(salad_average_calories_per_serving = mean(Calories.per.Serving)) </code></pre>
+<pre><code>##   salad_average_calories_per_serving
+## 1                                230</code></pre>
+</div>
+<div id="how-many-food-items-have-a-protein-content-greater-than-20-grams" class="section level1">
+<h1>4. How many food items have a protein content greater than 20
+grams?</h1>
+<pre class="r"><code>high_protein_items &lt;- food_data %&gt;%
+                      filter(Protein..g. &gt; 20)
+
+nrow(high_protein_items)</code></pre>
+<pre><code>## [1] 26</code></pre>
+<p>That are:</p>
+<table>
+<colgroup>
+<col width="22%" />
+<col width="10%" />
+<col width="4%" />
+<col width="10%" />
+<col width="14%" />
+<col width="8%" />
+<col width="11%" />
+<col width="5%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Food.Name</th>
+<th align="left">Category</th>
+<th align="right">Price</th>
+<th align="left">Main.Ingredient</th>
+<th align="right">Calories.per.Serving</th>
+<th align="right">Protein..g.</th>
+<th align="right">Carbohydrate..g.</th>
+<th align="right">Fat..g.</th>
+<th align="left">Country.of.Origin</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Grilled Salmon</td>
+<td align="left">Seafood</td>
+<td align="right">18.50</td>
+<td align="left">Salmon</td>
+<td align="right">350</td>
+<td align="right">30</td>
+<td align="right">0</td>
+<td align="right">15</td>
+<td align="left">Norway</td>
+</tr>
+<tr class="even">
+<td align="left">Chicken Caesar Salad</td>
+<td align="left">Salad</td>
+<td align="right">9.99</td>
+<td align="left">Chicken Breast</td>
+<td align="right">200</td>
+<td align="right">25</td>
+<td align="right">10</td>
+<td align="right">5</td>
+<td align="left">United States</td>
+</tr>
+<tr class="odd">
+<td align="left">Beef Burger</td>
+<td align="left">Burger</td>
+<td align="right">8.99</td>
+<td align="left">Beef</td>
+<td align="right">500</td>
+<td align="right">40</td>
+<td align="right">35</td>
+<td align="right">25</td>
+<td align="left">United States</td>
+</tr>
+<tr class="even">
+<td align="left">Spaghetti Bolognese</td>
+<td align="left">Pasta</td>
+<td align="right">10.50</td>
+<td align="left">Ground Beef</td>
+<td align="right">450</td>
+<td align="right">25</td>
+<td align="right">40</td>
+<td align="right">20</td>
+<td align="left">Italy</td>
+</tr>
+<tr class="odd">
+<td align="left">Chicken Teriyaki</td>
+<td align="left">Asian</td>
+<td align="right">12.25</td>
+<td align="left">Chicken</td>
+<td align="right">280</td>
+<td align="right">30</td>
+<td align="right">20</td>
+<td align="right">10</td>
+<td align="left">Japan</td>
+</tr>
+<tr class="even">
+<td align="left">Caesar Wrap</td>
+<td align="left">Wrap</td>
+<td align="right">6.99</td>
+<td align="left">Grilled Chicken</td>
+<td align="right">350</td>
+<td align="right">25</td>
+<td align="right">30</td>
+<td align="right">15</td>
+<td align="left">United States</td>
+</tr>
+<tr class="odd">
+<td align="left">Taco Salad</td>
+<td align="left">Mexican</td>
+<td align="right">9.50</td>
+<td align="left">Ground Beef</td>
+<td align="right">400</td>
+<td align="right">30</td>
+<td align="right">35</td>
+<td align="right">20</td>
+<td align="left">Mexico</td>
+</tr>
+<tr class="even">
+<td align="left">Roast Beef Sandwich</td>
+<td align="left">Sandwich</td>
+<td align="right">7.50</td>
+<td align="left">Roast Beef</td>
+<td align="right">350</td>
+<td align="right">30</td>
+<td align="right">25</td>
+<td align="right">15</td>
+<td align="left">United States</td>
+</tr>
+<tr class="odd">
+<td align="left">Steak Frites</td>
+<td align="left">Steak</td>
+<td align="right">22.99</td>
+<td align="left">Steak</td>
+<td align="right">600</td>
+<td align="right">50</td>
+<td align="right">40</td>
+<td align="right">30</td>
+<td align="left">France</td>
+</tr>
+<tr class="even">
+<td align="left">Fish and Chips</td>
+<td align="left">Seafood</td>
+<td align="right">14.50</td>
+<td align="left">Cod</td>
+<td align="right">500</td>
+<td align="right">25</td>
+<td align="right">50</td>
+<td align="right">20</td>
+<td align="left">United Kingdom</td>
+</tr>
+<tr class="odd">
+<td align="left">Baked Chicken</td>
+<td align="left">Chicken</td>
+<td align="right">9.25</td>
+<td align="left">Chicken</td>
+<td align="right">320</td>
+<td align="right">35</td>
+<td align="right">15</td>
+<td align="right">10</td>
+<td align="left">United States</td>
+</tr>
+<tr class="even">
+<td align="left">Chicken Alfredo</td>
+<td align="left">Pasta</td>
+<td align="right">12.50</td>
+<td align="left">Chicken</td>
+<td align="right">400</td>
+<td align="right">30</td>
+<td align="right">40</td>
+<td align="right">20</td>
+<td align="left">Italy</td>
+</tr>
+<tr class="odd">
+<td align="left">Hamburger</td>
+<td align="left">Burger</td>
+<td align="right">7.99</td>
+<td align="left">Beef</td>
+<td align="right">450</td>
+<td align="right">25</td>
+<td align="right">30</td>
+<td align="right">20</td>
+<td align="left">United States</td>
+</tr>
+<tr class="even">
+<td align="left">Crispy Fried Chicken</td>
+<td align="left">Chicken</td>
+<td align="right">11.50</td>
+<td align="left">Chicken</td>
+<td align="right">380</td>
+<td align="right">30</td>
+<td align="right">15</td>
+<td align="right">20</td>
+<td align="left">United States</td>
+</tr>
+<tr class="odd">
+<td align="left">Chicken Quesadilla</td>
+<td align="left">Mexican</td>
+<td align="right">8.99</td>
+<td align="left">Chicken</td>
+<td align="right">400</td>
+<td align="right">25</td>
+<td align="right">30</td>
+<td align="right">20</td>
+<td align="left">Mexico</td>
+</tr>
+<tr class="even">
+<td align="left">Spinach and Feta Stuffed Chicken</td>
+<td align="left">Chicken</td>
+<td align="right">13.99</td>
+<td align="left">Chicken</td>
+<td align="right">300</td>
+<td align="right">35</td>
+<td align="right">5</td>
+<td align="right">15</td>
+<td align="left">United States</td>
+</tr>
+<tr class="odd">
+<td align="left">Beef Stir-Fry</td>
+<td align="left">Asian</td>
+<td align="right">11.25</td>
+<td align="left">Beef</td>
+<td align="right">350</td>
+<td align="right">30</td>
+<td align="right">20</td>
+<td align="right">15</td>
+<td align="left">China</td>
+</tr>
+<tr class="even">
+<td align="left">Chicken Tikka Masala</td>
+<td align="left">Indian</td>
+<td align="right">14.50</td>
+<td align="left">Chicken</td>
+<td align="right">400</td>
+<td align="right">25</td>
+<td align="right">30</td>
+<td align="right">20</td>
+<td align="left">India</td>
+</tr>
+<tr class="odd">
+<td align="left">Grilled Swordfish</td>
+<td align="left">Seafood</td>
+<td align="right">21.95</td>
+<td align="left">Swordfish</td>
+<td align="right">420</td>
+<td align="right">25</td>
+<td align="right">0</td>
+<td align="right">18</td>
+<td align="left">Malta</td>
+</tr>
+<tr class="even">
+<td align="left">Turkey Burger</td>
+<td align="left">Burger</td>
+<td align="right">7.99</td>
+<td align="left">Turkey</td>
+<td align="right">400</td>
+<td align="right">30</td>
+<td align="right">25</td>
+<td align="right">20</td>
+<td align="left">United States</td>
+</tr>
+<tr class="odd">
+<td align="left">Chicken Shawarma</td>
+<td align="left">Middle Eastern</td>
+<td align="right">10.99</td>
+<td align="left">Chicken</td>
+<td align="right">380</td>
+<td align="right">30</td>
+<td align="right">25</td>
+<td align="right">15</td>
+<td align="left">Lebanon</td>
+</tr>
+<tr class="even">
+<td align="left">Teriyaki Beef</td>
+<td align="left">Asian</td>
+<td align="right">14.50</td>
+<td align="left">Beef</td>
+<td align="right">480</td>
+<td align="right">40</td>
+<td align="right">25</td>
+<td align="right">18</td>
+<td align="left">Japan</td>
+</tr>
+<tr class="odd">
+<td align="left">Greek Gyro</td>
+<td align="left">Greek</td>
+<td align="right">9.25</td>
+<td align="left">Lamb</td>
+<td align="right">450</td>
+<td align="right">25</td>
+<td align="right">35</td>
+<td align="right">20</td>
+<td align="left">Greece</td>
+</tr>
+<tr class="even">
+<td align="left">Filet Mignon</td>
+<td align="left">Steak</td>
+<td align="right">29.99</td>
+<td align="left">Beef</td>
+<td align="right">600</td>
+<td align="right">45</td>
+<td align="right">10</td>
+<td align="right">40</td>
+<td align="left">United States</td>
+</tr>
+<tr class="odd">
+<td align="left">Grilled Turkey Breast</td>
+<td align="left">Chicken</td>
+<td align="right">11.25</td>
+<td align="left">Turkey</td>
+<td align="right">280</td>
+<td align="right">35</td>
+<td align="right">5</td>
+<td align="right">10</td>
+<td align="left">United States</td>
+</tr>
+<tr class="even">
+<td align="left">Butter Chicken</td>
+<td align="left">Indian</td>
+<td align="right">13.50</td>
+<td align="left">Chicken</td>
+<td align="right">420</td>
+<td align="right">30</td>
+<td align="right">25</td>
+<td align="right">20</td>
+<td align="left">India</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="determine-the-distribution-of-carbohydrate-content-for-the-food-items." class="section level1">
+<h1>5. Determine the distribution of carbohydrate content for the food
+items.</h1>
+<pre class="r"><code>distribution &lt;- food_data %&gt;%
+                arrange(Carbohydrate..g.) %&gt;%
+                summarise(maximum = max(Carbohydrate..g.),
+                          minimum = min(Carbohydrate..g.),
+                          mean = mean(Carbohydrate..g.),
+                          median = median(Carbohydrate..g.),
+                          &#39;standard deviation&#39; = sd(Carbohydrate..g.))
+
+distribution %&gt;% kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">maximum</th>
+<th align="right">minimum</th>
+<th align="right">mean</th>
+<th align="right">median</th>
+<th align="right">standard deviation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">60</td>
+<td align="right">0</td>
+<td align="right">29.31915</td>
+<td align="right">30</td>
+<td align="right">15.36669</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>hist(food_data$Carbohydrate..g., 
+     breaks = &quot;Sturges&quot;,  # Specify the number of bins or choose a binning method
+     main = &quot;Carbohydrate Content Distribution&quot;,  # Title of the plot
+     xlab = &quot;Carbohydrate (g)&quot;,  # Label for x-axis
+     ylab = &quot;Frequency&quot;,  # Label for y-axis
+     col = &quot;lightblue&quot;  # Color of the bars
+)</code></pre>
+<p><img src="data:image/png;base64,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" width="672" /></p>
+</div>
+<div id="what-is-the-average-fat-content-of-the-food-items-in-the-pasta-category" class="section level1">
+<h1>6. What is the average fat content of the food items in the “Pasta”
+category?</h1>
+<pre class="r"><code>food_data %&gt;%
+  filter(Category == &quot;Pasta&quot;) %&gt;%
+  summarise(pasta_fat_average_content = mean(Fat..g.))</code></pre>
+<pre><code>##   pasta_fat_average_content
+## 1                        17</code></pre>
 </div>
 
 
